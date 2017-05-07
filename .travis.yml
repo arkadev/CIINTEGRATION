@@ -36,10 +36,10 @@ deploy:
   api_key: "$NPM_TOKEN"
   skip_cleanup: true
   on:
-    tags: true
+    repo: arkadev/CIINTEGRATION
+    tags: false
     all_branches: true
     branch: master
-    repo: arkadev/CIINTEGRATION
     
 notifications:
   email:
