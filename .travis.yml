@@ -14,33 +14,27 @@ before_install:
       cd "$TRAVIS_REPO_SLUG";
       git checkout -qf "$TRAVIS_COMMIT";
     fi
-  
 before_script: 
     - 'git checkout develop'
     - 'composer install'
 
 script: 
     - './vendor/bin/phpunit tests'
-    
 before_deploy:
-  - git config --global user.name arkadev
-  - git config --global user.email arkadevgroup@gmail.com
+  - git config --global user.name arkadev # Replace!
+  - git config --global user.email arkadevgroup@gmail.com # Replace!
   - git config credential.helper "store --file=.git/credentials"
   - echo "https://$GH_TOKEN:@github.com" > .git/credentials
   - git checkout master
   - npm run automatic-release # Here happens the magic
-
 deploy:
   provider: npm
-  email: arkadevgroup@gmail.com
+  email: arkadevgroup@gmail.com # Replace!
   api_key: "$NPM_TOKEN"
   skip_cleanup: true
   on:
-    repo: arkadev/CIINTEGRATION
-    tags: false
-    all_branches: true
     branch: master
-    
+    repo: arkadev/CIINTEGRATION # Replace!    
 notifications:
   email:
     recipients:
