@@ -14,10 +14,6 @@ before_install:
       cd "$TRAVIS_REPO_SLUG";
       git checkout -qf "$TRAVIS_COMMIT";
     fi
-    
-install:
-  - npm install
-  - npm install -g grunt-cli
   
 before_script: 
     - 'git checkout develop'
