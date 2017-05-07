@@ -14,6 +14,11 @@ before_install:
       cd "$TRAVIS_REPO_SLUG";
       git checkout -qf "$TRAVIS_COMMIT";
     fi
+    
+install:
+  - npm install
+  - npm install -g grunt-cli
+  
 before_script: 
     - 'git checkout develop'
     - 'composer install'
@@ -22,8 +27,8 @@ script:
     - './vendor/bin/phpunit tests'
     
 before_deploy:
-  - git config --global user.name arkadev # Replace!
-  - git config --global user.email arkadevgroup@gmail.com # Replace!
+  - git config --global user.name arkadev
+  - git config --global user.email arkadevgroup@gmail.com
   - git config credential.helper "store --file=.git/credentials"
   - echo "https://$GH_TOKEN:@github.com" > .git/credentials
   - git checkout master
@@ -35,8 +40,8 @@ deploy:
   api_key: "$NPM_TOKEN"
   skip_cleanup: true
   on:
-    all_branches: true
     tags: true
+    all_branches: true
     branch: master
     repo: arkadev/CIINTEGRATION
     
