@@ -21,8 +21,8 @@ before_script:
 script: 
     - './vendor/bin/phpunit tests'
 before_deploy:
-  - git config --global user.name "arkadev" # Replace!
-  - git config --global user.email "arkadevgroup@gmail.com" # Replace!
+  - git config --global user.name arkadev # Replace!
+  - git config --global user.email arkadevgroup@gmail.com # Replace!
   - git config credential.helper "store --file=.git/credentials"
   - echo "https://$GH_TOKEN:@github.com" > .git/credentials
   - git checkout master
@@ -34,7 +34,7 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
-    repo: https://github.com/arkadev/CIINTEGRATION.git # Replace!  
+    repo: arkadev/CIINTEGRATION # Replace!  
 notifications:
   email:
     recipients:
