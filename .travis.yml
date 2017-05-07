@@ -34,7 +34,8 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
-    repo: arkadev/CIINTEGRATION # Replace!  
+    repo: arkadev/CIINTEGRATION # Replace!    
+    tags: true
 notifications:
   email:
     recipients:
