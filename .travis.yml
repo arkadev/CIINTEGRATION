@@ -20,6 +20,7 @@ before_script:
 
 script: 
     - './vendor/bin/phpunit tests'
+    
 before_deploy:
   - git config --global user.name arkadev # Replace!
   - git config --global user.email arkadevgroup@gmail.com # Replace!
@@ -27,15 +28,18 @@ before_deploy:
   - echo "https://$GH_TOKEN:@github.com" > .git/credentials
   - git checkout master
   - npm run automatic-release # Here happens the magic
+
 deploy:
   provider: npm
-  email: arkadevgroup@gmail.com # Replace!
+  email: arkadevgroup@gmail.com
   api_key: "$NPM_TOKEN"
   skip_cleanup: true
   on:
-    branch: master
-    repo: arkadev/CIINTEGRATION # Replace!    
+    all_branches: true
     tags: true
+    branch: master
+    repo: arkadev/CIINTEGRATION
+    
 notifications:
   email:
     recipients:
